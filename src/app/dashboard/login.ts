@@ -3,7 +3,7 @@
 import prisma from "@/utils/prisma";
 
 export const login = async (publicKey: string) => {
-  const creatorExists = prisma.creator.findUnique({
+  const creatorExists = await prisma.creator.findUnique({
     where: {
       wallet: publicKey,
     },

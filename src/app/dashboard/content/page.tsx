@@ -48,7 +48,7 @@ const Content = async () => {
               description: string;
               fileKey: string;
             },
-            key
+            key: number
           ) => (
             <Card
               title={title}

@@ -9,6 +9,7 @@ import { UploadButton } from "@uploadthing/react";
 import { cookies } from "next/headers";
 import { setCookie } from "cookies-next";
 import { PublicKey } from "@solana/web3.js";
+import { login } from "./login";
 
 type DashboardProps = {
   children: React.ReactNode;
@@ -21,7 +22,9 @@ const Dashboard: React.FC<DashboardProps> = ({ children }) => {
   useEffect(() => {
     if (publicKey) {
       setCookie("publicKey", publicKey.toString());
-      login(publicKey);
+      login(publicKey.toString()).then(() => {
+        setConnected(true);
+      });
     }
   }, [publicKey]);
 
@@ -29,7 +32,9 @@ const Dashboard: React.FC<DashboardProps> = ({ children }) => {
     <div className="w-full h-screen flex flex-col">
       <Header />
       {!connected ? (
-        <ConnectWallet />
+        <div className="w-full h-full flex items-center justify-center">
+          <ConnectWallet />
+        </div>
       ) : (
         <div className="w-full flex-grow flex justify-center pt-10 gap-x-12">
           <Sidebar />
@@ -37,7 +42,7 @@ const Dashboard: React.FC<DashboardProps> = ({ children }) => {
             {React.Children.map(children, (child) =>
               React.isValidElement(child)
                 ? React.cloneElement(child, {
-                    publicKey: publicKey.toString(),
+                    publicKey: publicKey!.toString(),
                   } as React.Attributes)
                 : child
             )}
@@ -49,6 +54,3 @@ const Dashboard: React.FC<DashboardProps> = ({ children }) => {
 };
 
 export default Dashboard;
-function login(publicKey: PublicKey) {
-  throw new Error("Function not implemented.");
-}

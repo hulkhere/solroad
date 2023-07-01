@@ -37,14 +37,27 @@ const Content = async () => {
         </Link>
       </div>
       <div className="grid grid-cols-3 gap-5 mt-5">
-        {content.map(({ title, description, fileKey }, key) => (
-          <Card
-            title={title}
-            description={description}
-            fileKey={fileKey}
-            key={key}
-          />
-        ))}
+        {content.map(
+          (
+            {
+              title,
+              description,
+              fileKey,
+            }: {
+              title: string;
+              description: string;
+              fileKey: string;
+            },
+            key
+          ) => (
+            <Card
+              title={title}
+              description={description}
+              fileKey={fileKey}
+              key={key}
+            />
+          )
+        )}
       </div>
     </div>
   );

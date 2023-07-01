@@ -23,12 +23,11 @@ const getContent = async () => {
 
 const Content = async () => {
   const content = await getContent();
-  console.log(content);
 
   return (
     <div>
-      <div className="w-full flex justify-between">
-        <div></div>
+      <div className="w-full flex justify-between items-center">
+        <div className="text-5xl">CONTENT</div>
         <Link href="/dashboard/content/create">
           <button className="bg-white h-12 px-5 rounded text-black flex items-center font-bold">
             <PlusIcon className="w-5 h-5 mr-2" />
@@ -36,7 +35,7 @@ const Content = async () => {
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-3 gap-5 mt-5">
+      <div className="grid grid-cols-3 gap-5 mt-8">
         {content.map(
           (
             {

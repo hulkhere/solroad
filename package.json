@@ -25,6 +25,7 @@
     "image-compressor": "^2.0.3",
     "next": "13.4.7",
     "postcss": "8.4.24",
+    "prisma": "^4.16.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",

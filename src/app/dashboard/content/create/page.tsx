@@ -31,6 +31,7 @@ const create = () => {
         description: description!,
         type,
         fileKey: res![0].fileKey,
+        price,
       });
 
       window.location.href = "/dashboard/content";

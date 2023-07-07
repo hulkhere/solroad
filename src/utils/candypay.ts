@@ -2,8 +2,8 @@ import { CandyPay } from "@candypay/checkout-sdk";
 
 export const candypay = new CandyPay({
   api_keys: {
-    private_api_key: "cp_private_34z5edXP_5o91VcyBe1j6KJaWEkFewzwv",
-    public_api_key: "cp_public_dwXgSgKb_HSfcoKk2uvir6cVW384HFxvP",
+    private_api_key: process.env.CANDYPAY_PUBLIC_KEY!,
+    public_api_key: process.env.CANDYPAY_PRIVATE_KEY!,
   },
   network: "devnet",
   config: {

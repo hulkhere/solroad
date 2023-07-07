@@ -6,7 +6,7 @@ import { PlusIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
 const getContent = async () => {
-  const publicKey = cookies().get("publicKey")!.value;
+  const publicKey = cookies().get("publicKey")?.value;
   return await prisma.product.findMany({
     where: {
       creator: {

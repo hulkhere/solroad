@@ -19,6 +19,12 @@ model Creator {
     products Product[]
 }
 
+model User {
+    id        String    @id @unique @default(cuid())
+    wallet    String    @unique
+    purchases Product[]
+}
+
 model Product {
     id          String      @id @unique @default(cuid())
     title       String
@@ -28,6 +34,7 @@ model Product {
     price       Int
     creator     Creator     @relation(fields: [creatorId], references: [id])
     creatorId   String
+    purchases   User[]
 }
 
 enum ProductType {
